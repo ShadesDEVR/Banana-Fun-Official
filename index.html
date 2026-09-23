@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BananaFun</title><meta name="description" content="BananaFun — games, chat, music and experiments."><link rel="stylesheet" href="styles.css"></head>
+<body>
+<div id="banScreen" class="ban-screen hidden"><div class="ban-card"><div class="banana-big">🍌</div><h1>You have been banned</h1><p>You have been banned for <b id="banReason">REASON</b></p><p>Your ban lasts <b id="banTime">Time left</b></p><button class="btn" onclick="logout()">Log out</button></div></div>
+<header class="topbar"><a class="brand" href="#home">🍌 BananaFun</a><nav>
+<button data-page="home">Home</button><button data-page="games">Games</button><button data-page="music">Music</button><button data-page="chat">Chat</button><button data-page="ai">AI Game Maker</button><button data-page="updates">Updates</button><button data-page="suggestions">Suggestions</button><button data-page="about">About</button>
+</nav><button class="profile-mini" onclick="openProfile()">🍌 <span id="profileName">Guest</span></button></header>
+<main>
+<section id="home" class="page active"><div class="hero"><div class="eyebrow">THE FUN PLACE</div><h1>Welcome to <span>BananaFun</span></h1><p>Games, chat, music, experiments, community updates and more — all in one place.</p><div class="hero-actions"><button class="btn" onclick="openAuth('signup')">Sign up here</button><button class="btn ghost" onclick="openAuth('login')">Already have an account? Log in</button></div></div>
+<div class="grid three"><article class="feature">🎮<h3>Games</h3><p>Play BananaFun mini-games and explore the arcade.</p><button onclick="showPage('games')">Open Games →</button></article><article class="feature">💬<h3>Community Chat</h3><p>Talk with other BananaFun members with moderation built in.</p><button onclick="showPage('chat')">Open Chat →</button></article><article class="feature">🎵<h3>Music Requests</h3><p>Request music for moderator approval.</p><button onclick="showPage('music')">Open Music →</button></article></div>
+<div class="notice"><b>GoGuardian mode:</b> Every session asks whether you are blocked or unblocked. Blocked mode limits media sharing.</div></section>
+<section id="games" class="page"><div class="section-head"><div><div class="eyebrow">ARCADE</div><h2>Games</h2><p>Pick something and start playing.</p></div></div><div class="grid games-grid">
+<article class="game-card">💸<h3>Spend Us Money</h3><p>Spend a fictional pile of money.</p><button class="btn" onclick="openGame('spend')">Play</button></article>
+<article class="game-card">🤑<h3>Spend Bill Gates' Money</h3><p>Try to spend a giant fictional fortune.</p><button class="btn" onclick="openGame('bills')">Play</button></article>
+<article class="game-card">🐍<h3>Snake</h3><p>Classic keyboard Snake.</p><button class="btn" onclick="openGame('snake')">Play</button></article>
+<article class="game-card">🟨<h3>Pac-Banana</h3><p>Collect bananas and avoid ghosts.</p><button class="btn" onclick="openGame('pac')">Play</button></article>
+<article class="game-card">🟪<h3>Geometry Dash</h3><p>Jump over obstacles.</p><button class="btn" onclick="openGame('dash')">Play</button></article>
+<article class="game-card">🧪<h3>Sandbox</h3><p>Draw and experiment.</p><button class="btn" onclick="openGame('sandbox')">Play</button></article>
+<article class="game-card">👆<h3>Auto Clicker</h3><p>Stack clicks.</p><button class="btn" onclick="openGame('clicker')">Play</button></article>
+<article class="game-card">📚<h3>Kahoot</h3><p>Open Kahoot.</p><button class="btn" onclick="window.open('https://kahoot.it','_blank')">Open</button></article>
+<article class="game-card">🧠<h3>Blooket</h3><p>Open Blooket.</p><button class="btn" onclick="window.open('https://play.blooket.com','_blank')">Open</button></article>
+<article class="game-card">🌐<h3>Neal.fun</h3><p>Explore web experiments.</p><button class="btn" onclick="window.open('https://neal.fun','_blank')">Open</button></article>
+</div></section>
+<section id="music" class="page"><div class="section-head"><div><div class="eyebrow">MUSIC</div><h2>Music Requests</h2><p>Requests go to moderator approval.</p></div></div><div class="panel"><form id="musicForm"><input id="musicTitle" required placeholder="Song title"><input id="musicArtist" placeholder="Artist"><input id="musicUrl" placeholder="YouTube URL (optional)"><button class="btn">Request music</button></form></div><div id="musicQueue" class="stack"></div></section>
+<section id="chat" class="page"><div class="section-head"><div><div class="eyebrow">COMMUNITY</div><h2>Chat</h2><p id="chatStatus">Log in to chat.</p></div></div><div class="chat-wrap"><div id="messages" class="messages"></div><form id="chatForm" class="chat-form"><input id="chatInput" maxlength="500" placeholder="Write a message..."><button class="btn">Send</button></form></div><div class="notice small">Blocked mode restricts common media/link sharing.</div></section>
+<section id="ai" class="page"><div class="section-head"><div><div class="eyebrow">EXPERIMENTAL</div><h2>AI Game Maker</h2><p>Describe a game idea and build a mini prototype.</p></div></div><div class="panel"><textarea id="gamePrompt" rows="4" placeholder="Example: make a banana jumping game with coins"></textarea><button class="btn" onclick="makeGame()">Make my game</button></div><div id="generatedGame" class="generated"></div></section>
+<section id="updates" class="page"><div class="section-head"><div><div class="eyebrow">NEWS</div><h2>Website Updates</h2><p>Official BananaFun announcements.</p></div></div><div id="updatesList" class="stack"></div></section>
+<section id="suggestions" class="page"><div class="section-head"><div><div class="eyebrow">FEEDBACK</div><h2>Suggestions</h2><p>Tell us what should be added.</p></div></div><div class="panel"><form id="suggestForm"><input id="suggestTitle" required placeholder="Suggestion title"><textarea id="suggestBody" required rows="4" placeholder="What should BananaFun add?"></textarea><button class="btn">Send suggestion</button></form></div><div id="suggestionsList" class="stack"></div></section>
+<section id="about" class="page"><div class="about"><div class="banana-big">🍌</div><div><div class="eyebrow">ABOUT</div><h2>Hello I am Adam Cocolin.</h2><p>I made this website cuz I am tired. BananaFun is a fun place for games, experiments, community features and random stuff.</p></div></div></section>
+</main>
+<aside id="profilePanel" class="drawer hidden"><button class="close" onclick="closeProfile()">×</button><div id="profileContent"></div></aside>
+<div id="authModal" class="modal hidden"><div class="modal-card"><button class="close" onclick="closeAuth()">×</button><div id="authContent"></div></div></div>
+<div id="gameModal" class="modal hidden"><div class="modal-card wide"><button class="close" onclick="closeGame()">×</button><div id="gameContent"></div></div></div>
+<div id="guardianModal" class="modal hidden"><div class="modal-card guardian"><div class="banana-big">🍌</div><h2>Are you GoGuardian blocked or unblocked?</h2><p>This applies the correct media permissions for your session.</p><div class="guardian-actions"><button class="btn" onclick="setGuardian('unblocked')">I'm unblocked</button><button class="btn ghost" onclick="setGuardian('blocked')">I'm blocked</button></div></div></div>
+<div id="toast" class="toast"></div><footer>🍌 BananaFun • Have fun, be respectful.</footer><script src="app.js"></script>
+</body></html>
